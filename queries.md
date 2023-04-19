@@ -160,7 +160,7 @@ limit:
 ### 18. All the companies that have been acquired on the first trimester of the year. Limit the search to 10 companies, and retrieve only their `name` and `acquisition` fields.
 
 <!-- Your Code Goes Here -->
-query: {founded_month:{$lte:3}}
+query: {"acquisition.acquired_month": {$lte: 3}}
 projection: {name:1,acquisition:1,_id:0}
 sort:
 skip:
@@ -169,7 +169,7 @@ limit:10
 ### 19. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.
 
 <!-- Your Code Goes Here -->
-query: {$and:[{founded_year:{$gt:2000}},{founded_year:{$lt:2010}}]}
+query:{founded_year:{$gte: 2000, $lte: 2010}, "acquisition.acquired_year": {$gt: 2011}}
 projection: 
 sort:
 skip:
